@@ -43,10 +43,27 @@
 
 let n = 8; // Gary’s number of steps taken on his hike.
 let steps = "UDDDUDUU"; // a single string showing each step (U(up) & D(down))
+let steps2= "DDUUDDUDUUUD";
 
 function countingValleys(steps, path) {
-  // Write your code here
+  let count = 0;
+  let count2 = 0;
+  let x = false;
 
+  const arr = Array.from(path);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === "U") {
+      count++;
+    } else if (arr[i] === "D") {
+      count--;
+    }
+    if (count < 0) x=true;
+    if (count === 0 && x) {
+      count2 += 1;
+      x =false;
+    }
+  }
+  return count2;
 }
 
-console.log(countingValleys(steps, n))
+console.log(countingValleys(steps2, n));
